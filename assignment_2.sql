@@ -1,3 +1,11 @@
-select * from *;
+------------------------------
+-- ORACLE DATABASE CREATION --
+------------------------------
 
-//SQL code here initial commit
+-------------------------
+-- MOCK DATA INSERTION --
+-------------------------
+
+------------------------
+-- ANALYTICAL QUERIES --
+------------------------
