@@ -30,7 +30,7 @@ CREATE TABLE UserPlaylist (
 
 // Artists and Song system ERD //
 
-CREATE TABLE Genres (
+CREATE TABLE Genre (
     genre_id VARCHAR(36) PRIMARY KEY,
     genre_name VARCHAR(100),
     genre_description TEXT
@@ -75,6 +75,15 @@ CREATE TABLE SongCollaborations (
     FOREIGN KEY (artist_id) REFERENCES Artists(artist_id)
 );
 
+CREATE TABLE ArtistCollaboration (
+    artist_id VARCHAR(36),
+    song_id VARCHAR(36),
+    PRIMARY KEY (artist_id, album_id),
+    FOREIGN KEY (artist_id) REFERENCES Artists(artist_id) ON DELETE CASCADE,
+    FOREIGN KEY (album_id) REFERENCES Albums(album_id) ON DELETE CASCADE
+);
+
+// 
 -- Test comment for change ---
 
 -------------------------
