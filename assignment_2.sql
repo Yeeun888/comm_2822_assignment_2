@@ -548,8 +548,291 @@ INSERT INTO Campaign (
     TO_TIMESTAMP('2025-07-31 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
 );
 
----------------------- Mock Data for  Table --------------------------------
+---------------------- Mock Data for Current ads Table --------------------------------
+INSERT INTO CurrentAds (
+    ad_id,
+    campaign_id
+) VALUES
+(
+    'ad001a-b2c3-d4e5-f678-ads000000001', -- Ad for Urban Threads Co.
+    'camp001a-b2c3-d4e5-f678-camp000001'  -- Campaign for May 2025
+),
+(
+    'ad002b-c3d4-e5f6-7890-ads000000002', -- Ad for Linen Loft Ltd.
+    'camp002b-c3d4-e5f6-7890-camp000002'  -- Campaign for June 2025
+),
+(
+    'ad003c-d4e5-f6g7-8901-ads000000003', -- Ad for Denim Dock
+    'camp003c-d4e5-f6g7-8901-camp000003'  -- Campaign for July 2025
+),
+(
+    'ad004d-e5f6-g7h8-9012-ads000000004', -- Ad for Cotton Couture
+    'camp001a-b2c3-d4e5-f678-camp000001'  -- Campaign for May 2025
+),
+(
+    'ad005e-f6g7-h8i9-0123-ads000000005', -- Ad for Urban Threads Co.
+    'camp002b-c3d4-e5f6-7890-camp000002'  -- Campaign for June 2025
+),
+(
+    'ad006f-g7h8-i9j0-1234-ads000000006', -- Ad for Linen Loft Ltd.
+    'camp003c-d4e5-f6g7-8901-camp000003'  -- Campaign for July 2025
+);
 
+---------------------- Mock Data for Category Table --------------------------------
+INSERT INTO Category (
+    ad_category_id,
+    description
+) VALUES
+(
+    'cat001a-b2c3-d4e5-f678-cat000001', -- Category for Urban Threads Co. Ad 1
+    'Summer Collection - New Arrivals for the Season'
+),
+(
+    'cat002b-c3d4-e5f6-7890-cat000002', -- Category for Linen Loft Ltd. Ad 2
+    'Summer Sale - Discounts on Linen Apparel'
+),
+(
+    'cat003c-d4e5-f6g7-8901-cat000003', -- Category for Denim Dock Ad 3
+    'Denim Collection - Premium Denim for All Styles'
+),
+(
+    'cat004d-e5f6-g7h8-9012-cat000004', -- Category for Cotton Couture Ad 4
+    'Luxury Linen - High-End Linen Apparel Collection'
+),
+(
+    'cat005e-f6g7-h8i9-0123-cat000005', -- Category for Urban Threads Co. Ad 5
+    'Hoodies Collection - Cozy and Stylish Hoodies'
+),
+(
+    'cat006f-g7h8-i9j0-1234-cat000006', -- Category for Linen Loft Ltd. Ad 6
+    'Organic Collection - Sustainable and Eco-Friendly Linen'
+);
+
+---------------------- Mock Data for AdCategory Table --------------------------------
+INSERT INTO AdCategory (
+    ad_id,
+    ad_category_id
+) VALUES
+(
+    'ad001a-b2c3-d4e5-f678-ads000000001', -- Ad for Urban Threads Co.
+    'cat001a-b2c3-d4e5-f678-cat000001'    -- Category: Summer Collection
+),
+(
+    'ad002b-c3d4-e5f6-7890-ads000000002', -- Ad for Linen Loft Ltd.
+    'cat002b-c3d4-e5f6-7890-cat000002'    -- Category: Summer Sale
+),
+(
+    'ad003c-d4e5-f6g7-8901-ads000000003', -- Ad for Denim Dock
+    'cat003c-d4e5-f6g7-8901-cat000003'    -- Category: Denim Collection
+),
+(
+    'ad004d-e5f6-g7h8-9012-ads000000004', -- Ad for Cotton Couture
+    'cat004d-e5f6-g7h8-9012-cat000004'    -- Category: Luxury Linen
+),
+(
+    'ad005e-f6g7-h8i9-0123-ads000000005', -- Ad for Urban Threads Co.
+    'cat005e-f6g7-h8i9-0123-cat000005'    -- Category: Hoodies Collection
+),
+(
+    'ad006f-g7h8-i9j0-1234-ads000000006', -- Ad for Linen Loft Ltd.
+    'cat006f-g7h8-i9j0-1234-cat000006'    -- Category: Organic Collection
+);
+
+---------------------- Mock Data for Location Table --------------------------------
+INSERT INTO Location (
+    local_ad_group_id,
+    description,
+    timezone
+) VALUES
+(
+    'loc001a-b2c3-d4e5-f678-loc000001', -- Location for Urban Threads Co.
+    'Urban Threads Ad Group - Lala City',
+    'Asia/Kolkata'
+),
+(
+    'loc002b-c3d4-e5f6-7890-loc000002', -- Location for Linen Loft Ltd.
+    'Linen Loft Ad Group - Weaverton',
+    'Asia/Kolkata'
+),
+(
+    'loc003c-d4e5-f6g7-8901-loc000003', -- Location for Denim Dock
+    'Denim Dock Ad Group - Threadsville',
+    'Europe/Rome'
+),
+(
+    'loc004d-e5f6-g7h8-9012-loc000004', -- Location for Cotton Couture
+    'Cotton Couture Ad Group - Style Town',
+    'Europe/Rome'
+);
+
+---------------------- Mock Data for AdLocation Table --------------------------------
+INSERT INTO AdLocation (
+    ad_id,
+    local_ad_group_id,
+    timezone
+) VALUES
+(
+    'ad001a-b2c3-d4e5-f678-ads000000001', -- Urban Threads Co. Ad 1
+    'loc001a-b2c3-d4e5-f678-loc000001',
+    'Asia/Kolkata'
+),
+(
+    'ad002b-c3d4-e5f6-7890-ads000000002', -- Linen Loft Ltd. Ad 2
+    'loc002b-c3d4-e5f6-7890-loc000002',
+    'Asia/Kolkata'
+),
+(
+    'ad003c-d4e5-f6g7-8901-ads000000003', -- Denim Dock Ad 3
+    'loc003c-d4e5-f6g7-8901-loc000003',
+    'Europe/Rome'
+),
+(
+    'ad004d-e5f6-g7h8-9012-ads000000004', -- Cotton Couture Ad 4
+    'loc004d-e5f6-g7h8-9012-loc000004',
+    'Europe/Rome'
+),
+(
+    'ad005e-f6g7-h8i9-0123-ads000000005', -- Urban Threads Co. Ad 5
+    'loc001a-b2c3-d4e5-f678-loc000001',
+    'Asia/Kolkata'
+),
+(
+    'ad006f-g7h8-i9j0-1234-ads000000006', -- Linen Loft Ltd. Ad 6
+    'loc002b-c3d4-e5f6-7890-loc000002',
+    'Asia/Kolkata'
+);
+
+---------------------- Mock Data for AdStats Table --------------------------------
+INSERT INTO AdStats (
+    ad_stat_id,
+    merchant_id,
+    ad_id,
+    start_time,
+    end_time,
+    impressions,
+    clicks,
+    cost_per_click,
+    cost_per_impression
+) VALUES
+(
+    'stat001a-b2c3-d4e5-f678-stat000001', -- Urban Threads Co. Ad 1
+    'm001-urban-threads-uuid',
+    'ad001a-b2c3-d4e5-f678-ads000000001',
+    TO_TIMESTAMP('2025-03-01 08:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-03-15 20:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    100000,
+    1500,
+    1.20,
+    0.005
+),
+(
+    'stat002b-c3d4-e5f6-7890-stat000002', -- Linen Loft Ltd. Ad 2
+    'm002-linen-loft-uuid',
+    'ad002b-c3d4-e5f6-7890-ads000000002',
+    TO_TIMESTAMP('2025-03-05 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-03-25 22:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    80000,
+    980,
+    1.10,
+    0.005
+),
+(
+    'stat003c-d4e5-f6g7-8901-stat000003', -- Denim Dock Ad 3
+    'm003-denim-dock-uuid',
+    'ad003c-d4e5-f6g7-8901-ads000000003',
+    TO_TIMESTAMP('2025-03-10 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-03-30 20:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    120000,
+    2100,
+    1.50,
+    0.006
+),
+(
+    'stat004d-e5f6-g7h8-9012-stat000004', -- Cotton Couture Ad 4
+    'm004-cotton-couture-uuid',
+    'ad004d-e5f6-g7h8-9012-ads000000004',
+    TO_TIMESTAMP('2025-03-15 07:30:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-04-05 18:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    60000,
+    750,
+    1.30,
+    0.005
+),
+(
+    'stat005e-f6g7-h8i9-0123-stat000005', -- Urban Threads Co. Ad 5
+    'm001-urban-threads-uuid',
+    'ad005e-f6g7-h8i9-0123-ads000000005',
+    TO_TIMESTAMP('2025-03-20 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-04-10 21:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    95000,
+    1700,
+    1.15,
+    0.0045
+),
+(
+    'stat006f-g7h8-i9j0-1234-stat000006', -- Linen Loft Ltd. Ad 6
+    'm002-linen-loft-uuid',
+    'ad006f-g7h8-i9j0-1234-ads000000006',
+    TO_TIMESTAMP('2025-03-25 08:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-04-15 20:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    70000,
+    1100,
+    1.05,
+    0.0048
+);
+
+---------------------- Mock Data for MerchantInvoice Table --------------------------------
+INSERT INTO MerchantInvoice (
+    merchant_payment_id,
+    ad_stat_id,
+    payment_date,
+    payment_account,
+    status
+) VALUES
+(
+    1001,
+    'stat001a-b2c3-d4e5-f678-stat000001', -- Urban Threads Co.
+    TO_TIMESTAMP('2025-04-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110001,
+    'COMPLETED'
+),
+(
+    1002,
+    'stat002b-c3d4-e5f6-7890-stat000002', -- Linen Loft Ltd.
+    TO_TIMESTAMP('2025-04-02 12:30:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110002,
+    'COMPLETED'
+),
+(
+    1003,
+    'stat003c-d4e5-f6g7-8901-stat000003', -- Denim Dock
+    TO_TIMESTAMP('2025-04-03 15:45:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110003,
+    'PENDING'
+),
+(
+    1004,
+    'stat004d-e5f6-g7h8-9012-stat000004', -- Cotton Couture
+    TO_TIMESTAMP('2025-04-04 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110004,
+    'COMPLETED'
+),
+(
+    1005,
+    'stat005e-f6g7-h8i9-0123-stat000005', -- Urban Threads Co. second ad
+    TO_TIMESTAMP('2025-04-06 13:20:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110001,
+    'FAILED'
+),
+(
+    1006,
+    'stat006f-g7h8-i9j0-1234-stat000006', -- Linen Loft Ltd. second ad
+    TO_TIMESTAMP('2025-04-07 17:40:00', 'YYYY-MM-DD HH24:MI:SS'),
+    50110002,
+    'COMPLETED'
+);
+
+---------------------- Mock Data for MerchantInvoice Table --------------------------------
 
 ------------------------
 -- ANALYTICAL QUERIES --
