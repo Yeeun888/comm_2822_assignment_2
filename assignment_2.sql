@@ -833,6 +833,397 @@ INSERT INTO MerchantInvoice (
 );
 
 ---------------------- Mock Data for MerchantInvoice Table --------------------------------
+INSERT INTO MerchantInvoice (
+    merchant_payment_id,
+    ad_stat_id,
+    payment_date,
+    payment_account,
+    status
+) VALUES
+(
+    1001,
+    'stat001a-b2c3-d4e5-f678-stat000001', -- Urban Threads Co.
+    TO_TIMESTAMP('2025-04-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010001,
+    'COMPLETED'
+),
+(
+    1002,
+    'stat002b-c3d4-e5f6-7890-stat000002', -- Linen Loft Ltd.
+    TO_TIMESTAMP('2025-04-02 12:30:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010002,
+    'COMPLETED'
+),
+(
+    1003,
+    'stat003c-d4e5-f6g7-8901-stat000003', -- Denim Dock
+    TO_TIMESTAMP('2025-04-03 15:45:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010003,
+    'PENDING'
+),
+(
+    1004,
+    'stat004d-e5f6-g7h8-9012-stat000004', -- Cotton Couture
+    TO_TIMESTAMP('2025-04-04 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010004,
+    'COMPLETED'
+),
+(
+    1005,
+    'stat005e-f6g7-h8i9-0123-stat000005', -- Urban Threads Co. (2nd Ad)
+    TO_TIMESTAMP('2025-04-06 13:20:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010001,
+    'FAILED'
+),
+(
+    1006,
+    'stat006f-g7h8-i9j0-1234-stat000006', -- Linen Loft Ltd. (2nd Ad)
+    TO_TIMESTAMP('2025-04-07 17:40:00', 'YYYY-MM-DD HH24:MI:SS'),
+    30010002,
+    'COMPLETED'
+);
+
+---------------------- Mock Data for MerchantPayments Table --------------------------------
+INSERT INTO MerchantPayments (
+    merchant_id,
+    merchant_payment_id
+) VALUES
+-- Urban Threads Co. (2 payments)
+('c1a2b3d4-e5f6-7890-abcd-1234567890aa', 1001),
+('c1a2b3d4-e5f6-7890-abcd-1234567890aa', 1005),
+
+-- Linen Loft Ltd. (2 payments)
+('c2b3c4d5-e6f7-8901-bcda-2345678901bb', 1002),
+('c2b3c4d5-e6f7-8901-bcda-2345678901bb', 1006),
+
+-- Denim Dock (1 payment)
+('c3c4d5e6-f7g8-9012-cdab-3456789012cc', 1003),
+
+-- Cotton Couture (1 payment)
+('c4d5e6f7-g8h9-0123-dabc-4567890123dd', 1004);
+
+---------------------- Mock Data for UserPlaylist Table --------------------------------
+INSERT INTO UserPlaylist (
+    playlist_id,
+    user_id,
+    playlist_name,
+    playlist_description,
+    image_url,
+    created_at
+) VALUES
+-- Playlist for Bombardilo Crocodilo
+('pl-10001-01', '10001', 'Lalaland Vibes', 'A relaxing mix of Lalaland’s finest instrumentals.', 'https://lalastream.la/cover/lalaland-vibes.jpg', TO_TIMESTAMP('2024-01-10 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+
+-- Playlist for Jane Doe
+('pl-10002-01', '10002', 'Pop Picks', 'Top pop songs from Lalaland and beyond.', 'https://lalastream.la/cover/pop-picks.jpg', TO_TIMESTAMP('2024-02-20 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+
+-- Playlist for Alex Smith
+('pl-10003-01', '10003', 'Morning Motivation', 'Start your day with energy and inspiration.', 'https://lalastream.la/cover/morning-motivation.jpg', TO_TIMESTAMP('2024-03-15 07:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+
+-- Playlist for Sally Field
+('pl-10008-01', '10008', 'Throwback Classics', 'Old-school hits from every decade.', 'https://lalastream.la/cover/throwback-classics.jpg', TO_TIMESTAMP('2024-04-05 18:15:00', 'YYYY-MM-DD HH24:MI:SS')),
+
+-- Playlist for Ethan Williams
+('pl-10019-01', '10019', 'Gym Boosters', 'High tempo tracks for lifting and cardio.', 'https://lalastream.la/cover/gym-boosters.jpg', TO_TIMESTAMP('2024-05-01 06:45:00', 'YYYY-MM-DD HH24:MI:SS')),
+
+-- Playlist for Sophia Miller
+('pl-10020-01', '10020', 'Sleep Sounds', 'Gentle ambient tunes to help you drift off.', 'https://lalastream.la/cover/sleep-sounds.jpg', TO_TIMESTAMP('2024-05-10 22:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+---------------------- Mock Data for Genre Table --------------------------------
+INSERT INTO Genre (genre_id, genre_name, genre_description) 
+VALUES
+('g001-pop-uuid', 'Pop', 'Popular music with catchy melodies and broad appeal'),
+('g002-rock-uuid', 'Rock', 'Music characterized by a strong rhythm and often electric guitar'),
+('g003-hiphop-uuid', 'Hip Hop', 'A genre featuring rhythmic and rhyming speech (rap)'),
+('g004-jazz-uuid', 'Jazz', 'A genre known for improvisation, swing, and blue notes'),
+('g005-classical-uuid', 'Classical', 'Orchestral music rooted in Western traditions'),
+('g006-electronic-uuid', 'Electronic', 'Music produced using electronic instruments and technology'),
+('g007-country-uuid', 'Country', 'Music often centered around storytelling and acoustic instruments'),
+('g008-rnb-uuid', 'R&B', 'Rhythm and Blues, combining soulful vocals and strong backbeats'),
+('g009-reggae-uuid', 'Reggae', 'A Jamaican genre known for its offbeat rhythms and themes of peace'),
+('g010-metal-uuid', 'Metal', 'Heavy and aggressive genre with distorted guitars and powerful vocals');
+
+---------------------- Mock Data for Artists Table --------------------------------
+INSERT INTO Artists (artist_id, artist_name, picture_url, biography, created_at, updated_at) 
+VALUES
+-- Pop
+('a001-taylorswift-uuid', 'Taylor Swift', 'http://example.com/artists/taylor.jpg', 'American pop and country singer-songwriter.', TO_TIMESTAMP('2023-01-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Rock
+('a002-coldplay-uuid', 'Coldplay', 'http://example.com/artists/coldplay.jpg', 'British rock band known for melodic anthems.', TO_TIMESTAMP('2023-01-02 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Hip Hop
+('a003-kendricklamar-uuid', 'Kendrick Lamar', 'http://example.com/artists/kendrick.jpg', 'Critically acclaimed rapper and songwriter from Compton.', TO_TIMESTAMP('2023-01-03 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Jazz
+('a004-norahjones-uuid', 'Norah Jones', 'http://example.com/artists/norah.jpg', 'American singer with jazz, pop, and soul influences.', TO_TIMESTAMP('2023-01-04 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Classical
+('a005-yo-yo-ma-uuid', 'Yo-Yo Ma', 'http://example.com/artists/yoyoma.jpg', 'World-renowned cellist known for classical and crossover work.', TO_TIMESTAMP('2023-01-05 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Electronic
+('a006-deadmaus-uuid', 'Deadmau5', 'http://example.com/artists/deadmau5.jpg', 'Canadian electronic music producer and performer.', TO_TIMESTAMP('2023-01-06 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Country
+('a007-lukebryan-uuid', 'Luke Bryan', 'http://example.com/artists/luke.jpg', 'Popular American country singer and songwriter.', TO_TIMESTAMP('2023-01-07 17:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- R&B
+('a008-her-uuid', 'H.E.R.', 'http://example.com/artists/her.jpg', 'Grammy-winning artist known for soulful R&B sound.', TO_TIMESTAMP('2023-01-08 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Reggae
+('a009-bobmarley-uuid', 'Bob Marley', 'http://example.com/artists/bob.jpg', 'Legendary reggae musician and icon of peace and love.', TO_TIMESTAMP('2023-01-09 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL),
+
+-- Metal
+('a010-metallica-uuid', 'Metallica', 'http://example.com/artists/metallica.jpg', 'American heavy metal band known for powerful riffs and lyrics.', TO_TIMESTAMP('2023-01-10 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), NULL);
+
+---------------------- Mock Data for Albums Table --------------------------------
+INSERT INTO Albums (album_id, artist_id, genre_id, album_name, album_duration) VALUES
+-- Pop (Taylor Swift)
+('al001-ts1989-uuid', 'a001-taylorswift-uuid', 'g001-pop-uuid', '1989', 48),
+
+-- Rock (Coldplay)
+('al002-cp-parachutes-uuid', 'a002-coldplay-uuid', 'g002-rock-uuid', 'Parachutes', 42),
+
+-- Hip Hop (Kendrick Lamar)
+('al003-kl-damn-uuid', 'a003-kendricklamar-uuid', 'g003-hiphop-uuid', 'DAMN.', 55),
+
+-- Jazz (Norah Jones)
+('al004-nj-comeaway-uuid', 'a004-norahjones-uuid', 'g004-jazz-uuid', 'Come Away With Me', 45),
+
+-- Classical (Yo-Yo Ma)
+('al005-yyma-silkroad-uuid', 'a005-yo-yo-ma-uuid', 'g005-classical-uuid', 'Silk Road Journeys', 60),
+
+-- Electronic (Deadmau5)
+('al006-dm-randomalbum-uuid', 'a006-deadmaus-uuid', 'g006-electronic-uuid', 'Random Album Title', 66),
+
+-- Country (Luke Bryan)
+('al007-lb-crasemy-uuid', 'a007-lukebryan-uuid', 'g007-country-uuid', 'Crash My Party', 52),
+
+-- R&B (H.E.R.)
+('al008-her-vol1-uuid', 'a008-her-uuid', 'g008-rnb-uuid', 'H.E.R., Vol. 1', 47),
+
+-- Reggae (Bob Marley)
+('al009-bm-legend-uuid', 'a009-bobmarley-uuid', 'g009-reggae-uuid', 'Legend', 58),
+
+-- Metal (Metallica)
+('al010-mt-black-uuid', 'a010-metallica-uuid', 'g010-metal-uuid', 'The Black Album', 62);
+
+
+---------------------- Mock Data for ArtistCollaboration Table --------------------------------
+INSERT INTO ArtistCollaboration (artist_id, album_id) VALUES
+-- Single-artist albums
+('a001-taylorswift-uuid', 'al001-ts1989-uuid'),
+('a002-coldplay-uuid', 'al002-cp-parachutes-uuid'),
+('a003-kendricklamar-uuid', 'al003-kl-damn-uuid'),
+('a004-norahjones-uuid', 'al004-nj-comeaway-uuid'),
+('a005-yo-yo-ma-uuid', 'al005-yyma-silkroad-uuid'),
+('a006-deadmaus-uuid', 'al006-dm-randomalbum-uuid'),
+('a007-lukebryan-uuid', 'al007-lb-crasemy-uuid'),
+('a008-her-uuid', 'al008-her-vol1-uuid'),
+('a009-bobmarley-uuid', 'al009-bm-legend-uuid'),
+('a010-metallica-uuid', 'al010-mt-black-uuid'),
+
+-- Sample collaborations (for demonstration purposes)
+('a003-kendricklamar-uuid', 'al008-her-vol1-uuid'),     -- Kendrick Lamar featured on H.E.R.'s album
+('a004-norahjones-uuid', 'al005-yyma-silkroad-uuid'),   -- Norah Jones and Yo-Yo Ma collaboration
+('a002-coldplay-uuid', 'al006-dm-randomalbum-uuid');    -- Coldplay collaboration with Deadmau5
+
+---------------------- Mock Data for Songs Table --------------------------------
+INSERT INTO Songs (
+    song_id,
+    genre_id,
+    album_id,
+    right_holder_id,
+    song_title,
+    song_duration,
+    release_date
+) VALUES
+-- Taylor Swift - 1989
+('s001-ts-blankspace-uuid', 'g001-pop-uuid', 'al001-ts1989-uuid', 'rh001-universal-uuid', 'Blank Space', 231, '2014-10-27'),
+('s002-ts-style-uuid', 'g001-pop-uuid', 'al001-ts1989-uuid', 'rh001-universal-uuid', 'Style', 231, '2014-10-27'),
+
+-- Coldplay - Parachutes
+('s003-cp-yellow-uuid', 'g002-rock-uuid', 'al002-cp-parachutes-uuid', 'rh002-sony-uuid', 'Yellow', 267, '2000-07-10'),
+
+-- Kendrick Lamar - DAMN.
+('s004-kl-humble-uuid', 'g003-hiphop-uuid', 'al003-kl-damn-uuid', 'rh003-warner-uuid', 'HUMBLE.', 177, '2017-04-14'),
+
+-- Norah Jones - Come Away with Me
+('s005-nj-dontknowwhy-uuid', 'g004-jazz-uuid', 'al004-nj-comeaway-uuid', 'rh004-emi-uuid', 'Don\'t Know Why', 207, '2002-02-26'),
+
+-- Yo-Yo Ma - Silk Road
+('s006-yyma-journey-uuid', 'g005-classical-uuid', 'al005-yyma-silkroad-uuid', 'rh001-universal-uuid', 'Journey to the West', 321, '2000-05-01'),
+
+-- Deadmau5 - Random Album Title
+('s007-dm-ghostsnstuff-uuid', 'g006-edm-uuid', 'al006-dm-randomalbum-uuid', 'rh002-sony-uuid', 'Ghosts \'n\' Stuff', 245, '2008-09-02'),
+
+-- Luke Bryan - Crash My Party
+('s008-lb-thatsmykind-uuid', 'g007-country-uuid', 'al007-lb-crasemy-uuid', 'rh003-warner-uuid', 'That\'s My Kind of Night', 211, '2013-08-13'),
+
+-- H.E.R. - Vol. 1
+('s009-her-focus-uuid', 'g008-rnb-uuid', 'al008-her-vol1-uuid', 'rh004-emi-uuid', 'Focus', 220, '2016-09-09'),
+
+-- Bob Marley - Legend
+('s010-bm-no-woman-uuid', 'g009-reggae-uuid', 'al009-bm-legend-uuid', 'rh001-universal-uuid', 'No Woman, No Cry', 256, '1984-05-08'),
+
+-- Metallica - Black Album
+('s011-mt-enter-sandman-uuid', 'g010-metal-uuid', 'al010-mt-black-uuid', 'rh002-sony-uuid', 'Enter Sandman', 331, '1991-08-12');
+
+
+---------------------- Mock Data for SongsCollaboration Table --------------------------------
+INSERT INTO SongCollaborations (
+    song_id,
+    artists_id
+) VALUES
+-- Taylor Swift - solo songs
+('s001-ts-blankspace-uuid', 'a001-taylor-swift-uuid'),
+('s002-ts-style-uuid', 'a001-taylor-swift-uuid'),
+
+-- Coldplay - solo band entry
+('s003-cp-yellow-uuid', 'a002-coldplay-uuid'),
+
+-- Kendrick Lamar - solo song
+('s004-kl-humble-uuid', 'a003-kendrick-lamar-uuid'),
+
+-- Norah Jones - solo song
+('s005-nj-dontknowwhy-uuid', 'a004-norah-jones-uuid'),
+
+-- Yo-Yo Ma - solo classical track
+('s006-yyma-journey-uuid', 'a005-yo-yo-ma-uuid'),
+
+-- Deadmau5 - main artist + featuring Rob Swire (example of collab)
+('s007-dm-ghostsnstuff-uuid', 'a006-deadmau5-uuid'),
+('s007-dm-ghostsnstuff-uuid', 'a011-rob-swire-uuid'),
+
+-- Luke Bryan - solo country track
+('s008-lb-thatsmykind-uuid', 'a007-luke-bryan-uuid'),
+
+-- H.E.R. - solo R&B track
+('s009-her-focus-uuid', 'a008-her-uuid'),
+
+-- Bob Marley - solo reggae track
+('s010-bm-no-woman-uuid', 'a009-bob-marley-uuid'),
+
+-- Metallica - band entry
+('s011-mt-enter-sandman-uuid', 'a010-metallica-uuid');
+
+
+---------------------- Mock Data for Songstats Table --------------------------------
+INSERT INTO SongStats (
+    songstat_id,
+    rightholder_id,
+    song_id,
+    cost_per_play,
+    likes,
+    shares,
+    start_date,
+    end_date
+) VALUES
+-- Taylor Swift songs
+('ss001-ts-blankspace-uuid', 'rh001-universal-uuid', 's001-ts-blankspace-uuid', 0.00500, 1500000, 200000, TO_TIMESTAMP('2024-01-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2025-01-01', 'YYYY-MM-DD')),
+('ss002-ts-style-uuid',       'rh001-universal-uuid', 's002-ts-style-uuid',      0.00520, 1200000, 180000, TO_TIMESTAMP('2024-01-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2025-01-01', 'YYYY-MM-DD')),
+
+-- Coldplay
+('ss003-cp-yellow-uuid',      'rh002-sony-uuid',      's003-cp-yellow-uuid',     0.00480, 2000000, 250000, TO_TIMESTAMP('2023-06-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-06-01', 'YYYY-MM-DD')),
+
+-- Kendrick Lamar
+('ss004-kl-humble-uuid',      'rh003-warner-uuid',    's004-kl-humble-uuid',     0.00600, 2500000, 350000, TO_TIMESTAMP('2022-08-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2023-08-01', 'YYYY-MM-DD')),
+
+-- Norah Jones
+('ss005-nj-dontknowwhy-uuid', 'rh001-universal-uuid', 's005-nj-dontknowwhy-uuid',0.00450, 1100000, 140000, TO_TIMESTAMP('2022-01-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2023-01-01', 'YYYY-MM-DD')),
+
+-- Yo-Yo Ma
+('ss006-yyma-journey-uuid',   'rh004-naxos-uuid',     's006-yyma-journey-uuid',  0.00350, 900000,  80000,  TO_TIMESTAMP('2021-01-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2022-01-01', 'YYYY-MM-DD')),
+
+-- Deadmau5 feat. Rob Swire
+('ss007-dm-ghostsnstuff-uuid','rh005-mau5trap-uuid',  's007-dm-ghostsnstuff-uuid',0.00650, 1800000, 220000, TO_TIMESTAMP('2024-05-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2025-05-01', 'YYYY-MM-DD')),
+
+-- Luke Bryan
+('ss008-lb-thatsmykind-uuid', 'rh001-universal-uuid', 's008-lb-thatsmykind-uuid', 0.00400, 1000000, 130000, TO_TIMESTAMP('2022-03-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2023-03-01', 'YYYY-MM-DD')),
+
+-- H.E.R.
+('ss009-her-focus-uuid',      'rh001-universal-uuid', 's009-her-focus-uuid',      0.00530, 1600000, 170000, TO_TIMESTAMP('2023-09-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-09-01', 'YYYY-MM-DD')),
+
+-- Bob Marley
+('ss010-bm-no-woman-uuid',    'rh006-islandrec-uuid', 's010-bm-no-woman-uuid',    0.00490, 3000000, 400000, TO_TIMESTAMP('2020-01-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2021-01-01', 'YYYY-MM-DD')),
+
+-- Metallica
+('ss011-mt-enter-sandman-uuid','rh002-sony-uuid',     's011-mt-enter-sandman-uuid',0.00580, 2700000, 290000, TO_TIMESTAMP('2022-11-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2023-11-01', 'YYYY-MM-DD'));
+
+---------------------- Mock Data for Rightholderinvoice Table --------------------------------
+INSERT INTO RightholderInvoice (
+    rightholder_payment_id,
+    songstat_id,
+    payment_date,
+    payment_account,
+    status
+) VALUES
+('rp001-ts-blankspace-invoice',   'ss001-ts-blankspace-uuid',   TO_TIMESTAMP('2025-01-10', 'YYYY-MM-DD'), 7500, 'PAID'),
+('rp002-ts-style-invoice',        'ss002-ts-style-uuid',        TO_TIMESTAMP('2025-01-15', 'YYYY-MM-DD'), 6240, 'PAID'),
+('rp003-cp-yellow-invoice',       'ss003-cp-yellow-uuid',       TO_TIMESTAMP('2024-06-10', 'YYYY-MM-DD'), 9600, 'PAID'),
+('rp004-kl-humble-invoice',       'ss004-kl-humble-uuid',       TO_TIMESTAMP('2023-08-12', 'YYYY-MM-DD'), 15000, 'PAID'),
+('rp005-nj-dontknowwhy-invoice',  'ss005-nj-dontknowwhy-uuid',  TO_TIMESTAMP('2023-01-20', 'YYYY-MM-DD'), 4950, 'PAID'),
+('rp006-yyma-journey-invoice',    'ss006-yyma-journey-uuid',    TO_TIMESTAMP('2022-01-30', 'YYYY-MM-DD'), 3150, 'PAID'),
+('rp007-dm-ghostsnstuff-invoice', 'ss007-dm-ghostsnstuff-uuid', TO_TIMESTAMP('2025-05-01', 'YYYY-MM-DD'), 11700, 'PENDING'),
+('rp008-lb-thatsmykind-invoice',  'ss008-lb-thatsmykind-uuid',  TO_TIMESTAMP('2023-03-15', 'YYYY-MM-DD'), 4000, 'PAID'),
+('rp009-her-focus-invoice',       'ss009-her-focus-uuid',       TO_TIMESTAMP('2024-09-15', 'YYYY-MM-DD'), 8480, 'PENDING'),
+('rp010-bm-nowoman-invoice',      'ss010-bm-no-woman-uuid',     TO_TIMESTAMP('2021-01-10', 'YYYY-MM-DD'), 14700, 'PAID'),
+('rp011-mt-entsandman-invoice',   'ss011-mt-enter-sandman-uuid',TO_TIMESTAMP('2023-11-20', 'YYYY-MM-DD'), 15660, 'FAILED');
+
+
+---------------------- Mock Data for Rightholderpayments Table --------------------------------
+INSERT INTO RightholderPayment (
+    rightholder_id,
+    rightholder_payment_id
+) VALUES
+('rr001-ts-uuid',  'rp001-ts-blankspace-invoice'),
+('rr001-ts-uuid',  'rp002-ts-style-invoice'),
+
+('rr002-cp-uuid',  'rp003-cp-yellow-invoice'),
+
+('rr003-kl-uuid',  'rp004-kl-humble-invoice'),
+
+('rr004-nj-uuid',  'rp005-nj-dontknowwhy-invoice'),
+
+('rr005-yyma-uuid','rp006-yyma-journey-invoice'),
+
+('rr006-dm-uuid',  'rp007-dm-ghostsnstuff-invoice'),
+
+('rr007-lb-uuid',  'rp008-lb-thatsmykind-invoice'),
+
+('rr008-her-uuid', 'rp009-her-focus-invoice'),
+
+('rr009-bm-uuid',  'rp010-bm-nowoman-invoice'),
+
+('rr010-mt-uuid',  'rp011-mt-entsandman-invoice');
+
+
+---------------------- Mock Data for SongPlaylist Table --------------------------------
+INSERT INTO PlaylistSongs (
+    playlist_id,
+    song_id
+) VALUES
+-- Focus Vibes
+('p001-focus-vibes-uuid', 's009-focus'),
+('p001-focus-vibes-uuid', 's005-dontknowwhy'),
+('p001-focus-vibes-uuid', 's003-yellow'),
+
+-- Chill Sessions
+('p002-chill-sessions-uuid', 's006-journey'),
+('p002-chill-sessions-uuid', 's005-dontknowwhy'),
+('p002-chill-sessions-uuid', 's009-focus'),
+
+-- Workout Boost
+('p003-workout-boost-uuid', 's004-humble'),
+('p003-workout-boost-uuid', 's007-ghostsnstuff'),
+('p003-workout-boost-uuid', 's011-entsandman'),
+
+-- Throwback Gold
+('p004-throwback-gold-uuid', 's001-blankspace'),
+('p004-throwback-gold-uuid', 's002-style'),
+('p004-throwback-gold-uuid', 's010-nowoman'),
+('p004-throwback-gold-uuid', 's008-thatsmykind');
+
 
 ------------------------
 -- ANALYTICAL QUERIES --
