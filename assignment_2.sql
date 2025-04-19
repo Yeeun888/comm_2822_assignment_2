@@ -339,6 +339,217 @@ CREATE TABLE PlaylistSongs (
 -------------------------
 -- MOCK DATA INSERTION --
 -------------------------
+-------------------- Mock Data for Users Table -----------------------------------
+INSERT INTO Users (user_id, username, email, password_hash, first_name, last_name, profile_picture_url, created_at, last_login)
+VALUES
+('10001', 'BombardiloCrocodilo', 'bombardilocrocodilo@example.com', 'hashed_pw_01', 'Bombardilo', 'Crocodilo', 'http://example.com/pic1.jpg', TO_TIMESTAMP('2023-01-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-01-02 10:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10002', 'janedoe', 'janedoe@example.com', 'hashed_pw_02', 'Jane', 'Doe', 'http://example.com/pic2.jpg', TO_TIMESTAMP('2023-02-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-02-02 13:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10003', 'alexsmith', 'alexsmith@example.com', 'hashed_pw_03', 'Alex', 'Smith', 'http://example.com/pic3.jpg', TO_TIMESTAMP('2023-03-01 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-03-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10004', 'maryjane', 'maryjane@example.com', 'hashed_pw_04', 'Mary', 'Jane', 'http://example.com/pic4.jpg', TO_TIMESTAMP('2023-03-10 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-03-11 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10005', 'dannyboy', 'dannyboy@example.com', 'hashed_pw_05', 'Danny', 'Boy', 'http://example.com/pic5.jpg', TO_TIMESTAMP('2023-04-01 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-04-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10006', 'lucaslee', 'lucaslee@example.com', 'hashed_pw_06', 'Lucas', 'Lee', 'http://example.com/pic6.jpg', TO_TIMESTAMP('2023-04-10 07:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-04-10 08:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10007', 'bobbrown', 'bobbrown@example.com', 'hashed_pw_07', 'Bob', 'Brown', 'http://example.com/pic7.jpg', TO_TIMESTAMP('2023-05-01 06:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-05-01 06:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10008', 'sallyfield', 'sallyfield@example.com', 'hashed_pw_08', 'Sally', 'Field', 'http://example.com/pic8.jpg', TO_TIMESTAMP('2023-05-05 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-05-05 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10009', 'mattwhite', 'mattwhite@example.com', 'hashed_pw_09', 'Matt', 'White', 'http://example.com/pic9.jpg', TO_TIMESTAMP('2023-06-01 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-06-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10010', 'emilygreen', 'emilygreen@example.com', 'hashed_pw_10', 'Emily', 'Green', 'http://example.com/pic10.jpg', TO_TIMESTAMP('2023-06-10 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-06-10 11:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10011', 'michaelblue', 'michaelblue@example.com', 'hashed_pw_11', 'Michael', 'Blue', 'http://example.com/pic11.jpg', TO_TIMESTAMP('2023-07-01 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-07-02 09:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10012', 'rachelgray', 'rachelgray@example.com', 'hashed_pw_12', 'Rachel', 'Gray', 'http://example.com/pic12.jpg', TO_TIMESTAMP('2023-07-15 08:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-07-15 09:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10013', 'nathanclark', 'nathanclark@example.com', 'hashed_pw_13', 'Nathan', 'Clark', 'http://example.com/pic13.jpg', TO_TIMESTAMP('2023-08-01 07:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-08-01 08:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10014', 'lisajones', 'lisajones@example.com', 'hashed_pw_14', 'Lisa', 'Jones', 'http://example.com/pic14.jpg', TO_TIMESTAMP('2023-08-10 06:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-08-10 07:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10015', 'kevinhall', 'kevinhall@example.com', 'hashed_pw_15', 'Kevin', 'Hall', 'http://example.com/pic15.jpg', TO_TIMESTAMP('2023-09-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-09-01 13:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10016', 'meganhill', 'meganhill@example.com', 'hashed_pw_16', 'Megan', 'Hill', 'http://example.com/pic16.jpg', TO_TIMESTAMP('2023-09-10 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-09-10 11:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10017', 'steveblack', 'steveblack@example.com', 'hashed_pw_17', 'Steve', 'Black', 'http://example.com/pic17.jpg', TO_TIMESTAMP('2023-10-01 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-10-01 15:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10018', 'oliviabrown', 'oliviabrown@example.com', 'hashed_pw_18', 'Olivia', 'Brown', 'http://example.com/pic18.jpg', TO_TIMESTAMP('2023-10-15 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-10-15 16:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10019', 'ethanwilliams', 'ethanwilliams@example.com', 'hashed_pw_19', 'Ethan', 'Williams', 'http://example.com/pic19.jpg', TO_TIMESTAMP('2023-11-01 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-11-01 10:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+('10020', 'sophiamiller', 'sophiamiller@example.com', 'hashed_pw_20', 'Sophia', 'Miller', 'http://example.com/pic20.jpg', TO_TIMESTAMP('2023-11-15 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2023-11-15 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+---------------------- Mock Data for RightHolders Table --------------------------------
+INSERT INTO rightholders (
+    rightholder_id,
+    rightholder_signin,
+    password_hash,
+    rightholder_name,
+    contact_name,
+    business_email,
+    billing_address,
+    tax_id_number
+) VALUES (
+    'RH-001',
+    'sony.music@signin.com',
+    'hashed_pw_1a2b3c4d',
+    'Sony Music Entertainment',
+    'Alice Tan',
+    'contact@sonymusic.com',
+    '25 Madison Ave, New York, NY',
+    123456789
+);
+
+INSERT INTO rightholders (
+    rightholder_id,
+    rightholder_signin,
+    password_hash,
+    rightholder_name,
+    contact_name,
+    business_email,
+    billing_address,
+    tax_id_number
+) VALUES (
+    'RH-002',
+    'universal.group@signin.com',
+    'hashed_pw_2b3c4d5e',
+    'Universal Music Group',
+    'Brian Lee',
+    'support@umusic.com',
+    '2220 Colorado Ave, Santa Monica, CA',
+    987654321
+);
+
+INSERT INTO rightholders (
+    rightholder_id,
+    rightholder_signin,
+    password_hash,
+    rightholder_name,
+    contact_name,
+    business_email,
+    billing_address,
+    tax_id_number
+) VALUES (
+    'RH-003',
+    'electrobeats@signin.com',
+    'hashed_pw_3c4d5e6f',
+    'ElectroBeats Ltd.',
+    'Sasha Ivanov',
+    'info@electrobeats.com',
+    '99 Synth Street, Berlin, Germany',
+    837291045
+);
+
+---------------------- Mock Data for Merchants Table --------------------------------
+INSERT INTO merchants (
+    merchant_id,
+    merchant_signin,
+    password_hash,
+    business_name,
+    contact_name,
+    business_email,
+    billing_address
+) VALUES
+(
+    'c1a2b3d4-e5f6-7890-abcd-1234567890aa',
+    'urbanthreads_login',
+    '5f4dcc3b5aa765d61d8327deb882cf99', -- mock MD5 for 'password'
+    'Urban Threads Co.',
+    'Ava Carter',
+    'support@urbanthreads.com',
+    '12 Fabric Lane, Garment District, Lalaland'
+),
+(
+    'c2b3c4d5-e6f7-8901-bcda-2345678901bb',
+    'linenloft_signin',
+    'e99a18c428cb38d5f260853678922e03', -- mock MD5 for 'abc123'
+    'Linen Loft Ltd.',
+    'Ethan Walker',
+    'contact@linenloft.la',
+    '45 Stitch Ave, Weaveton, Lalaland'
+),
+(
+    'c3c4d5e6-f7g8-9012-cdab-3456789012cc',
+    'denimdock_login',
+    'd8578edf8458ce06fbc5bb76a58c5ca4', -- mock MD5 for 'qwerty'
+    'Denim Dock',
+    'Olivia Nguyen',
+    'info@denimdock.la',
+    '89 Indigo Blvd, Threadsville, Lalaland'
+),
+(
+    'c4d5e6f7-g8h9-0123-dabc-4567890123dd',
+    'cottoncouture_store',
+    '25f9e794323b453885f5181f1b624d0b', -- mock MD5 for '123456789'
+    'Cotton Couture',
+    'Jackson Patel',
+    'admin@cottoncouture.co.la',
+    '101 Cotton Row, Style City, Lalaland'
+);
+
+---------------------- Mock Data for Ads Table --------------------------------
+INSERT INTO Ads (
+    ad_id,
+    merchant_id,
+    redirect_link,
+    ad_type,
+    content_url
+) VALUES
+(
+    'ad001a-b2c3-d4e5-f678-ads000000001',
+    'c1a2b3d4-e5f6-7890-abcd-1234567890aa', -- Urban Threads Co.
+    'https://urbanthreads.com/new-arrivals',
+    'banner',
+    'https://cdn.urbanthreads.com/ads/banner1.jpg'
+),
+(
+    'ad002b-c3d4-e5f6-7890-ads000000002',
+    'c2b3c4d5-e6f7-8901-bcda-2345678901bb', -- Linen Loft Ltd.
+    'https://linenloft.la/summer-sale',
+    'video',
+    'https://cdn.linenloft.la/ads/summer2025.mp4'
+),
+(
+    'ad003c-d4e5-f6g7-8901-ads000000003',
+    'c3c4d5e6-f7g8-9012-cdab-3456789012cc', -- Denim Dock
+    'https://denimdock.la/denim-collection',
+    'popup',
+    'https://cdn.denimdock.la/ads/popup-jeans.png'
+),
+(
+    'ad004d-e5f6-g7h8-9012-ads000000004',
+    'c4d5e6f7-g8h9-0123-dabc-4567890123dd', -- Cotton Couture
+    'https://cottoncouture.co.la/luxury-linen',
+    'banner',
+    'https://media.cottoncouture.co.la/ads/banner2.jpg'
+),
+(
+    'ad005e-f6g7-h8i9-0123-ads000000005',
+    'c1a2b3d4-e5f6-7890-abcd-1234567890aa', -- Urban Threads Co.
+    'https://urbanthreads.com/hoodies',
+    'video',
+    'https://cdn.urbanthreads.com/ads/hoodies-spot.mp4'
+),
+(
+    'ad006f-g7h8-i9j0-1234-ads000000006',
+    'c2b3c4d5-e6f7-8901-bcda-2345678901bb', -- Linen Loft Ltd.
+    'https://linenloft.la/organic-collection',
+    'popup',
+    'https://cdn.linenloft.la/ads/organic-popup.png'
+);
+
+---------------------- Mock Data for Campaign Table --------------------------------
+INSERT INTO Campaign (
+    campaign_id,
+    user_id,
+    start_date,
+    end_date
+) VALUES
+(
+    'camp001a-b2c3-d4e5-f678-camp000001',
+    '10009', -- Example user_id for marketing team
+    TO_TIMESTAMP('2025-05-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-05-31 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+),
+(
+    'camp002b-c3d4-e5f6-7890-camp000002',
+    '10003', -- Example user_id for marketing team
+    TO_TIMESTAMP('2025-06-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-06-30 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+),
+(
+    'camp003c-d4e5-f6g7-8901-camp000003',
+    '10011', -- Example user_id for marketing team
+    TO_TIMESTAMP('2025-07-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+    TO_TIMESTAMP('2025-07-31 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+);
+
+---------------------- Mock Data for  Table --------------------------------
+
 
 ------------------------
 -- ANALYTICAL QUERIES --
