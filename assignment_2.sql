@@ -1,4 +1,9 @@
 --------------------------
+-- TABLE OF CONTENTS --
+--------------------------
+
+
+--------------------------
 -- OLD DATABASE CLEANUP --
 --------------------------
 
@@ -281,6 +286,7 @@ CREATE TABLE SongStats (
     songstat_id     VARCHAR2(36),
     rightholder_id  VARCHAR2(36),
     song_id         VARCHAR2(256),
+    number_plays    NUMBER DEFAULT 0 NOT NULL,
     cost_per_play   NUMBER(10,5) NOT NULL,
     likes           NUMBER DEFAULT 0 CONSTRAINT likes_check CHECK (likes > 0),
     shares          NUMBER DEFAULT 0 NOT NULL,
@@ -1846,12 +1852,123 @@ INSERT INTO PlaylistSongs (playlist_id, song_id) VALUES ('pl-10008-01', 's001-ts
 INSERT INTO PlaylistSongs (playlist_id, song_id) VALUES ('pl-10008-01', 's002-ts-style-uuid');
 INSERT INTO PlaylistSongs (playlist_id, song_id) VALUES ('pl-10008-01', 's010-bm-no-woman-uuid');
 INSERT INTO PlaylistSongs (playlist_id, song_id) VALUES ('pl-10008-01', 's008-lb-thatsmykind-uuid');
+
 ------------------------
 -- ANALYTICAL QUERIES --
 ------------------------
 
+-- Basic select statements to check insertion of data in database
 Select * from users;
 Select * from rightholders;
 select * from adstats;
+select * from ads;
 select * from songs;
 select * from songstats;
+
+-- Analytical Statements
+
+-- Analytical Statement 1 -- Query most played song
+SELECT s.song_id, so.song_title, SUM(s.number_plays) AS total_plays
+FROM SongStats s
+JOIN Songs so ON s.song_id = so.song_id
+GROUP BY s.song_id, so.song_title
+ORDER BY total_plays DESC
+FETCH FIRST 5 ROWS ONLY;
+
+-- Analytical Statement 2 -- Query albums of a specific genre
+SELECT *
+FROM Albums
+WHERE genre_id = 'g005-classical-uuid';
+
+-- Analytical Statement 3 -- Albums with most plays
+SELECT 
+    a.album_id,
+    a.album_name,
+    SUM(ss.number_plays) AS total_album_plays
+FROM SongStats ss
+JOIN Songs s ON ss.song_id = s.song_id
+JOIN Albums a ON s.album_id = a.album_id
+GROUP BY a.album_id, a.album_name
+ORDER BY total_album_plays DESC;
+
+-- Analytical Statment 4 -- Ads with most impression
+SELECT s.*, a.*
+FROM AdStats s Join Ads a on s.ad_id = a.ad_id
+ORDER BY s.impressions;
+
+-- Analytical Statment 5 -- Ads grouped by location
+SELECT 
+    l.local_ad_group_id,
+    l.description,
+    a.ad_id
+FROM AdLocation a
+JOIN Location l ON a.local_ad_group_id = l.local_ad_group_id
+ORDER BY l.local_ad_group_id, a.ad_id;
+
+-- Analytical Statement 6 -- Create campaign with location of "Urban Threads Ad Group - Lala City"
+INSERT INTO Campaign (
+    campaign_id,
+    user_id,
+    start_date,
+    end_date
+) VALUES (
+    'CAMP1234567890',        
+    10001,        
+    SYSTIMESTAMP,
+    SYSTIMESTAMP + INTERVAL '30' DAY
+);
+
+INSERT INTO CurrentAds (ad_id, campaign_id)
+SELECT al.ad_id, 'CAMP1234567890'
+FROM AdLocation al
+JOIN Location l ON al.local_ad_group_id = l.local_ad_group_id
+WHERE l.description = 'Urban Threads Ad Group - Lala City';
+
+-- Analytical Statment 7 -- Organize by Payment Status (Merchants)
+SELECT
+    merchant_payment_id,
+    ad_stat_id,
+    payment_date,
+    payment_account,
+    status
+FROM MerchantInvoice
+ORDER BY status DESC, payment_date;
+
+-- Analytical Statement 8 -- Find all invoices
+SELECT mi.merchant_payment_id, 
+       mi.ad_stat_id, 
+       mi.payment_date, 
+       mi.payment_account, 
+       mi.status
+FROM MerchantInvoice mi
+JOIN AdStats s ON mi.ad_stat_id = s.ad_stat_id
+WHERE s.merchant_id = 'c1a2b3d4-e5f6-7890-abcd-1234567890aa';
+
+-- Analytical Statment 9 -- Find my ads and order them by impression
+SELECT 
+    s.*
+FROM AdStats s
+JOIN Ads a ON s.ad_id = a.ad_id
+WHERE a.merchant_id = 'c1a2b3d4-e5f6-7890-abcd-1234567890aa'
+ORDER BY s.impressions DESC;
+
+-- Analytical Statement 10 -- 
+SELECT ss.*
+FROM SongStats ss
+WHERE ss.rightholder_id = 'RH-001'
+ORDER BY ss.number_plays;
+
+-- Analytical Statement 11 -- Find all of my invoices given a rightholder_id 
+SELECT ri.*
+FROM RightholderInvoice ri
+JOIN RightholderPayment rp ON ri.rightholder_payment_id = rp.rightholder_payment_id
+WHERE rp.rightholder_id = 'RH-001';
+
+-- Analytical Statement 12 -- Find all song statistics without an invoice (middle of month)
+SELECT ss.*
+FROM SongStats ss
+LEFT JOIN RightholderInvoice ri 
+    ON ss.songstat_id = ri.songstat_id
+WHERE ss.rightholder_id = 'RH-001'
+  AND ri.songstat_id IS NULL;
+
